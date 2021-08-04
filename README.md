@@ -59,23 +59,9 @@ A game will _have many_ reviews. Before we worry about the migration that will
 implement this in our songs table, let's think about what that table will look
 like:
 
-<table border="1" cellpadding="4" cellspacing="0">
-  <tr>
-    <th>id</th>
-    <th>title</th>
-    <th>genre</th>
-    <th>platform</th>
-    <th>price</th>
-  </tr>
-  
-  <tr>
-    <td>1</td>
-    <td>Breath of the Wild</td>
-    <td>Switch</td>
-    <td>Action-adventure</td>
-    <td>60</td>
-  </tr>
-</table>
+| id | title | genre | platform | price |
+| --- | --- | --- | --- | --- |
+| 1 | Breath of the Wild | Switch | Action-adventure | 60 |
 
 Our games table doesn't need any information about the reviews, so it makes
 sense to generate this table first: it doesn't have any dependencies on another
@@ -117,21 +103,9 @@ belongs to.
 
 Let's take a look at what our `reviews` table will need to look like:
 
-<table border="1" cellpadding="4" cellspacing="0">
-  <tr>
-    <th>id</th>
-    <th>score</th>
-    <th>comment</th>
-    <th>game_id</th>
-  </tr>
-  
-  <tr>
-    <td>1</td>
-    <td>10</td>
-    <td>A classic!</td>
-    <td>1</td>
-  </tr>
-</table>
+| id | score | comment | game_id |
+| --- | --- | --- | --- |
+| 1 | 10 | A classic! | 1 |
 
 Notice we're using a `game_id` column to create a foreign key relationship with
 the `games` table. This naming convention is **very important**, as we'll see
