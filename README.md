@@ -56,7 +56,7 @@ macros.
 ### The Game Model
 
 A game will _have many_ reviews. Before we worry about the migration that will
-implement this in our songs table, let's think about what that table will look
+implement this in our reviews table, let's think about what that table will look
 like:
 
 | id | title | genre | platform | price |
