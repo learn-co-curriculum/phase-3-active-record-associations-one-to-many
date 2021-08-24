@@ -59,9 +59,9 @@ A game will _have many_ reviews. Before we worry about the migration that will
 implement this in our reviews table, let's think about what that table will look
 like:
 
-| id | title | genre | platform | price |
-| --- | --- | --- | --- | --- |
-| 1 | Breath of the Wild | Switch | Action-adventure | 60 |
+| id  | title              | genre  | platform         | price |
+| --- | ------------------ | ------ | ---------------- | ----- |
+| 1   | Breath of the Wild | Switch | Action-adventure | 60    |
 
 Our games table doesn't need any information about the reviews, so it makes
 sense to generate this table first: it doesn't have any dependencies on another
@@ -71,13 +71,13 @@ can exist without any reviews.
 Let's write the migration that will make this happen. Run this code to create
 a migration:
 
-```sh
-bundle exec rake db:create_migration NAME=create_games
+```console
+$ bundle exec rake db:create_migration NAME=create_games
 ```
 
 In the migration file, write the following migration:
 
-```ruby
+```rb
 class CreateGames < ActiveRecord::Migration[6.1]
   def change
     create_table :games do |t|
@@ -103,9 +103,9 @@ belongs to.
 
 Let's take a look at what our `reviews` table will need to look like:
 
-| id | score | comment | game_id |
-| --- | --- | --- | --- |
-| 1 | 10 | A classic! | 1 |
+| id  | score | comment    | game_id |
+| --- | ----- | ---------- | ------- |
+| 1   | 10    | A classic! | 1       |
 
 Notice we're using a `game_id` column to create a foreign key relationship with
 the `games` table. This naming convention is **very important**, as we'll see
@@ -125,13 +125,13 @@ key.
 Ok! Now that we know what we need to create, let's run this code to create a
 migration:
 
-```sh
-bundle exec rake db:create_migration NAME=create_reviews
+```console
+$ bundle exec rake db:create_migration NAME=create_reviews
 ```
 
 In the migration file:
 
-```ruby
+```rb
 class CreateReviews < ActiveRecord::Migration[6.1]
   def change
     create_table :reviews do |t|
@@ -147,8 +147,8 @@ end
 Great! Now go ahead and run the following commands in your terminal to
 run our migrations and generate some seed data:
 
-```sh
-bundle exec rake db:migrate
+```console
+$ bundle exec rake db:migrate
 ```
 
 There is also some code in the `db/seeds.rb` file that we'll use to generate
@@ -158,8 +158,8 @@ review.
 
 Run this to seed the database:
 
-```sh
-bundle exec rake db:seed
+```console
+$ bundle exec rake db:seed
 ```
 
 ## Building our Associations using Active Record Macros
@@ -190,7 +190,7 @@ Our `Review` class is set up in `app/models/review.rb`. Notice that it inherits 
 `ActiveRecord::Base`. This is very important! If we don't inherit from
 `ActiveRecord::Base`, we won't get our fancy macro methods.
 
-```ruby
+```rb
 class Review < ActiveRecord::Base
 
 end
@@ -199,8 +199,8 @@ end
 Let's start by talking through the code we want to be able to write here. Hop
 into your console by running:
 
-```sh
-bundle exec rake console
+```console
+$ bundle exec rake console
 ```
 
 From the console, access the first song:
@@ -260,7 +260,7 @@ Record makes our lives a bit easier. This is where those macros come into play.
 Let's update the `Review` class to use the `belongs_to` macro instead of our
 custom method:
 
-```ruby
+```rb
 class Review < ActiveRecord::Base
   belongs_to :game
 end
@@ -313,7 +313,7 @@ Our `Game` class is set up in `app/models/game.rb`. We need to tell the
 `Game` class that each game instance can have many reviews. We will use the
 `has_many` macro to do it:
 
-```ruby
+```rb
 class Game < ActiveRecord::Base
   has_many :reviews
 
@@ -370,8 +370,8 @@ All the tests should be passing now if you run `learn test`, so from here on
 we'll just be exploring the functionality provided by the `has_many` and
 `belongs_to` macros. Follow along with this code by running:
 
-```sh
-bundle exec rake console
+```console
+$ bundle exec rake console
 ```
 
 To recap what we've seen so far:
