@@ -44,7 +44,7 @@ macros (more on that later), we will be able to:
 - ask a game about its reviews
 - ask a review about its game
 
-Here's what our Entity Relationship Diagram looks like:
+Here's what our Entity Relationship Diagram (ERD) looks like:
 
 ![Game Reviews ERD](https://curriculum-content.s3.amazonaws.com/phase-3/active-record-associations-one-to-many/games-reviews-erd.png)
 
@@ -144,8 +144,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
 end
 ```
 
-Great! Now go ahead and run the following commands in your terminal to
-run our migrations and generate some seed data:
+Great! Now go ahead and run the following command in your terminal to
+run our migrations:
 
 ```console
 $ bundle exec rake db:migrate
@@ -203,7 +203,7 @@ into your console by running:
 $ bundle exec rake console
 ```
 
-From the console, access the first song:
+From the console, access the first review:
 
 ```rb
 # Access the first review instance in the database
@@ -323,7 +323,7 @@ end
 Just like with `belongs_to`, following naming conventions is important: we use
 the **plural** for the `has_many` macro.
 
-And that's it! Now, because our `reviews` table has an `game_id` column and
+And that's it! Now, because our `reviews` table has a `game_id` column and
 because our `Game` class uses the `has_many` macro, we can easily access a list
 of all reviews associated with any game! What this means in code is that we can
 now use the `#reviews` instance method to return a list of all the reviews
