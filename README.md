@@ -351,7 +351,7 @@ end
 ```
 
 Again, by following conventions with our table names and foreign key names, we
-can use the macro to saves us from writing this code out by hand.
+can use the macro to save us from writing this code out by hand.
 
 Here's the SQL that Active Record generates for this query:
 
