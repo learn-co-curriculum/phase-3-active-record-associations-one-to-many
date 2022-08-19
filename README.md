@@ -59,9 +59,9 @@ A game will _have many_ reviews. Before we worry about the migration that will
 implement this in our reviews table, let's think about what that table will look
 like:
 
-| id  | title              | genre  | platform         | price |
-| --- | ------------------ | ------ | ---------------- | ----- |
-| 1   | Breath of the Wild | Switch | Action-adventure | 60    |
+| id  | title              | genre            | platform   | price |
+| --- | ------------------ | ---------------- | ---------- | ----- |
+| 1   | Breath of the Wild | Action-adventure | Switch     | 60    |
 
 Our games table doesn't need any information about the reviews, so it makes
 sense to generate this table first: it doesn't have any dependencies on another
