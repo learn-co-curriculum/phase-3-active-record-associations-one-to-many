@@ -341,6 +341,7 @@ If we were to write this `#reviews` instance method out by hand, it'd look
 something like this:
 
 ```rb
+# app/models/review.rb
 class Game < ActiveRecord::Base
 
   def reviews
