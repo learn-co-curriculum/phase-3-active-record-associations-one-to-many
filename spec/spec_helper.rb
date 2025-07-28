@@ -1,15 +1,10 @@
 ENV['RACK_ENV'] = 'test'
-require_relative "../config/environment"
-require "sinatra/activerecord/rake"
+require_relative '../config/environment'
+require 'sinatra/activerecord/rake'
 
 RSpec.configure do |config|
-  # Database setup
-  if ActiveRecord::Base.connection.migration_context.needs_migration?
-    # Run migrations for test environment
-    Rake::Task["db:migrate"].execute
-  end
-
   config.before(:suite) do
+    Rake::Task['db:migrate'].execute
     DatabaseCleaner.clean_with(:truncation)
   end
 
@@ -36,6 +31,6 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
-  
+
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
